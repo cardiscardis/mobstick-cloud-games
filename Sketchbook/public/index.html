@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>Sketchbook — Controller</title>
+    <link rel="stylesheet" href="controller.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Join Screen -->
+    <div id="join-screen">
+        <div class="join-content">
+            <h1>SKETCHBOOK</h1>
+            <p class="subtitle">CONTROLLER</p>
+            <div class="input-group">
+                <label for="room-input">ENTER ROOM CODE</label>
+                <input type="text" id="room-input" maxlength="6" placeholder="ABC123" autocomplete="off"
+                    autocorrect="off" spellcheck="false">
+            </div>
+            <button id="join-btn">CONNECT</button>
+            <p id="error-msg" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- Controller Screen -->
+    <div id="controller-screen" class="hidden">
+        <div id="controller-header">
+            <div class="status-pill">
+                <div class="dot connected"></div>
+                <span>Connected</span>
+            </div>
+            <span id="room-label"></span>
+        </div>
+
+        <div id="controller-area">
+            <!-- Joystick Zone (left) -->
+            <div id="joystick-zone">
+                <div id="joystick-base">
+                    <div id="joystick-ring"></div>
+                    <div id="joystick-stick"></div>
+                </div>
+                <span class="zone-label">MOVE</span>
+            </div>
+
+            <!-- Buttons Zone (right) -->
+            <div id="buttons-zone">
+                <button id="btn-fire" class="action-btn fire-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="17 1 21 5 17 9" />
+                        <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                        <polyline points="7 23 3 19 7 15" />
+                        <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+                    </svg>
+                    <span>ENTER</span>
+                </button>
+                <button id="btn-boost" class="action-btn boost-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19V5M5 12l7-7 7 7" />
+                    </svg>
+                    <span>JUMP</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="controller.js"></script>
+</body>
+
+</html>

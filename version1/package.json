@@ -1,0 +1,14 @@
+{
+  "name": "mobile-joystick-controller",
+  "version": "1.0.0",
+  "description": "Mobile joystick controller for a desktop browser game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "socket.io": "^4.7.4"
+  }
+}

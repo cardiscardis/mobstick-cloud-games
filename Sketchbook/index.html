@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Sketchbook</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600&display=swap"
+		rel="stylesheet">
+	<style>
+		/* ---- Controller Overlay ---- */
+		#controller-overlay {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			background: rgba(6, 6, 26, 0.8);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+			border-radius: 12px;
+			padding: 16px 24px;
+			color: white;
+			font-family: 'Inter', sans-serif;
+			text-align: center;
+			z-index: 1000;
+			box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+			transition: opacity 0.3s ease;
+		}
+
+		#controller-overlay.connected {
+			opacity: 0.5;
+		}
+
+		#controller-overlay.connected:hover {
+			opacity: 1;
+		}
+
+		#controller-overlay .label {
+			font-size: 0.7rem;
+			color: rgba(255, 255, 255, 0.5);
+			letter-spacing: 2px;
+			margin-bottom: 4px;
+			display: block;
+		}
+
+		#controller-overlay .code {
+			font-family: 'Orbitron', monospace;
+			font-size: 2rem;
+			font-weight: 700;
+			color: #00f0ff;
+			letter-spacing: 4px;
+			text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+			margin-bottom: 8px;
+		}
+
+		#controller-overlay .status {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+		}
+
+		.status-dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #facc15;
+			box-shadow: 0 0 8px #facc15;
+			animation: pulse 1.5s infinite;
+		}
+
+		.status-dot.connected {
+			background: #22c55e;
+			box-shadow: 0 0 8px #22c55e;
+			animation: none;
+		}
+
+		@keyframes pulse {
+
+			0%,
+			100% {
+				opacity: 1;
+			}
+
+			50% {
+				opacity: 0.3;
+			}
+		}
+
+		.status-text {
+			font-size: 0.8rem;
+			color: rgba(255, 255, 255, 0.8);
+		}
+
+		.instructions {
+			margin-top: 12px;
+			font-size: 0.7rem;
+			color: rgba(255, 255, 255, 0.4);
+		}
+	</style>
+</head>
+
+<body>
+	<div id="controller-overlay">
+		<span class="label">MOBILE CONTROLLER</span>
+		<div id="overlay-code" class="code">---</div>
+		<div class="status">
+			<div id="overlay-dot" class="status-dot"></div>
+			<span id="overlay-text" class="status-text">Waiting...</span>
+		</div>
+		<div class="instructions">Go to <strong id="overlay-url"></strong> on your phone</div>
+	</div>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/socket-integration.js"></script>
+	<script src="build/sketchbook.min.js"></script>
+	<script>
+		const world = new Sketchbook.World('build/assets/world.glb');
+	</script>
+</body>
+
+</html>

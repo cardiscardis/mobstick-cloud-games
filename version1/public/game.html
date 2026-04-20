@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Space Drift — Desktop Game</title>
+  <link rel="stylesheet" href="game.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Mode Selection Screen -->
+  <div id="mode-select">
+    <div id="mode-select-content">
+      <h1>SPACE DRIFT</h1>
+      <p class="subtitle">SELECT GAME MODE</p>
+      <div id="mode-buttons">
+        <button class="mode-btn" id="btn-single">
+          <div class="mode-icon">🚀</div>
+          <div class="mode-title">SINGLE PLAYER</div>
+          <div class="mode-desc">One controller, one ship</div>
+        </button>
+        <button class="mode-btn multi" id="btn-multi">
+          <div class="mode-icon">🚀🚀</div>
+          <div class="mode-title">MULTIPLAYER</div>
+          <div class="mode-desc">Two controllers, two ships</div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Connection Overlay -->
+  <div id="overlay" class="hidden">
+    <div id="overlay-content">
+      <h1>SPACE DRIFT</h1>
+      <p class="subtitle" id="mode-label">Mobile Joystick Controller</p>
+      <div id="room-info">
+        <span class="label">ROOM CODE</span>
+        <span id="room-code" class="code">Connecting...</span>
+      </div>
+      <div id="connection-status">
+        <div class="status-dot waiting"></div>
+        <span id="status-text">Waiting for controller...</span>
+      </div>
+      <div id="players-status" class="hidden">
+        <div class="player-slot" id="p1-slot">
+          <div class="player-dot p1"></div>
+          <span>Player 1</span>
+          <span class="slot-status" id="p1-status">Waiting...</span>
+        </div>
+        <div class="player-slot" id="p2-slot">
+          <div class="player-dot p2"></div>
+          <span>Player 2</span>
+          <span class="slot-status" id="p2-status">Waiting...</span>
+        </div>
+      </div>
+      <p class="instructions">Open <strong id="controller-url"></strong> on your phone and enter the room code above.</p>
+    </div>
+  </div>
+
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- Single Player HUD -->
+  <div id="hud">
+    <div id="score-display">
+      <span class="hud-label">SCORE</span>
+      <span id="score">0</span>
+    </div>
+    <div id="lives-display">
+      <span class="hud-label">LIVES</span>
+      <span id="lives">♥♥♥</span>
+    </div>
+    <div id="controller-indicator">
+      <div class="status-dot" id="ctrl-dot"></div>
+      <span id="ctrl-label">No Controller</span>
+    </div>
+  </div>
+
+  <!-- Multiplayer HUD -->
+  <div id="hud-multi" class="hidden">
+    <div class="hud-player p1-hud">
+      <span class="hud-player-label">P1</span>
+      <span class="hud-label">SCORE</span>
+      <span class="hud-score" id="p1-score">0</span>
+      <span class="hud-lives" id="p1-lives">♥♥♥</span>
+    </div>
+    <div class="hud-player p2-hud">
+      <span class="hud-player-label">P2</span>
+      <span class="hud-label">SCORE</span>
+      <span class="hud-score" id="p2-score">0</span>
+      <span class="hud-lives" id="p2-lives">♥♥♥</span>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
